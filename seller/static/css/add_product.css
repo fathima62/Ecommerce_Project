@@ -1,0 +1,59 @@
+#div2 {
+    padding-left: 50px;
+   
+    width: 250px;
+    height: 800px;
+    
+}
+
+.a1 {
+    font-size: medium;
+    font-weight: bold;
+    color: rgb(11, 10, 10);
+
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-decoration: none;
+
+}
+.form{
+   display: inline;
+   position: absolute;
+   top: 150px;
+   left: 500px;
+   
+}
+.row{
+    width: 700px;
+}
+h1{
+    position: absolute;
+    top: 55px;
+    left: 495px;
+}
+.textarea{
+    width: 400px;
+    height: 200px;
+}
+.img{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    left: 300px;
+}
+.btn{
+    position: absolute;
+    bottom: -163px;
+}
+.labelimg{
+    position: absolute;
+    top: 500px;
+}
+
+
+#a2{
+    text-decoration: none;
+    padding-left: 50px;
+
+}

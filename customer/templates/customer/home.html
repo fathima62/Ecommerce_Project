@@ -1,0 +1,58 @@
+{% extends 'common/home.html' %}
+{% load static %} 
+{% block header %} 
+  <style>
+  .nav-link :hover{
+    color: black;
+  }
+  
+  #card {
+
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding-left: 40px;
+    padding-top: 80px;
+    padding-top: 150px;
+
+  }
+  
+  </style>
+  {% endblock %}
+
+  {% block seller %}
+  {% if 'userid' in request.session %} 
+  <p class="nav-link"><b>Hello,{{request.session.username}}</b></p>
+  {% endif %}
+  {% endblock %}
+
+  <!-- {% block login %}
+ {% if 'userid' in request.session %}
+  <li class="nav-item">
+  <a class="nav-link " href="{% url 'customer:logout' %}" >LOGOUT</a>
+  </li> 
+  {% endif %}
+  {% endblock %} -->
+
+  {% block content %}
+  <div id="card">  
+    <!-- <h1>products</h1>                                                                 -->
+    {% for product in products %}                                       
+    <div class="card" style="width: 15rem;">
+      <a href="{% url 'customer:product_page' product.id %}">
+      <img src="{{product.prod_image.url}}" class="card-img-top" alt="...">
+    </a>
+      <div class="card-body">
+        <h5 class="card-title">{{product.prod_name}}</h5>
+        <p class="card-text">{{product.prod_details}}</p>
+        <p class="card-text">Sold by : {{product.seller.s_name}}</p>
+        <p class="card-text">Price : {{product.prod_price}}</p>
+        
+        <a href="{% url 'customer:add_to_cart' product.id %}">Add to cart</a>
+      </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  </div>
+  {% endblock %}

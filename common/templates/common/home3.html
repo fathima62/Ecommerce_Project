@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  
+  {% block header %}
+  <style>
+    #a {
+
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      padding-left: 40px;
+      padding-top: 80px;
+
+    }
+  </style> {% endblock %}
+
+</head>
+
+<body>
+ 
+
+  <div>
+    <div class=" text-dark bg-success bg-gradient bg-opacity-50 rounded navbar navbar-expand-lg ">
+      <!-- become a seller button start -->
+      <div class="container mt-5">
+        {% block seller %}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mymodal">Become a
+          seller</button> {% endblock %}
+        <div class="modal" id="mymodal">
+          <div class="modal-dialog">
+            <div class="modal-content Signup-box">
+              <div class="modal-header">
+                <h2 class="modal-title">Sign up</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <label for="" class="form-label">Seller Name</label>
+                  <input type="text" name="seller_name" class="form-control">
+                  <label for="" class="form-label">Email</label>
+                  <input type="email" name="email" class="form-control" id="s_email">
+                  <span id = "messages"></span> <br>
+                  <label for="" class="form-label">Phone</label>
+                  <input type="number" name="phone" class="form-control">
+                  <label for="" class="form-label">Address</label>
+                  <textarea name="address" id="" cols="30" rows="3" class="form-control"></textarea>
+                  <label for="" class="form-label">Account number</label>
+                  <input type="number" name="account_number" class="form-control">
+                  <label for="" class="form-label">IFSC code</label>
+                  <input type="text" name="IFSC" class="form-control">
+                  <label for="" class="form-label">Ac Holder name</label>
+                  <input type="text" name="account_holder" class="form-control">
+                  <label for="" class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control">
+                  <label for="" class="form-label">Upload Image</label>
+                  <input type="file" name="image" class="form-control">
+                  <button type="submit" value="submit" name="s_signup"> Sign up</button>
+
+                </form>
+                <div class="para">already have an account?<a href="" data-bs-toggle="modal"
+                    data-bs-target="#seller_login_modal">Sign in</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- become a seller button end -->
+      <!-- navbar -->
+      <nav>
+        <div class="container-fluid ">
+          <div class="collapse navbar-collapse position-absolute top-0 start-50" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="nav-link" href="#">Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="nav-link" href="#">Cart</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              {% block login %}
+              <a class="nav-link " href="#" data-bs-toggle="modal"
+                data-bs-target="#login_modal">Login</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container ">
+      <div class="modal" id="signupmodal">
+        <div class="modal-dialog">
+          <div class="modal-content Signup-box">
+            <div class="modal-header">
+              <h2 class="modal-title">Sign up</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- c -form -->
+            <div class="modal-body">
+              <form method="POST">
+                {% csrf_token %}
+                <label for="" class="form-label">First Name</label>
+                <input type="text" name="first_name" class="form-control">
+                <label for="" class="form-label">Second Name</label>
+                <input type="text" name="second_name" class="form-control">
+                <label for="" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email">
+                <span id="message"></span> <br>
+                <label for="" class="form-label">Phone</label>
+                <input type="number" name="phone" class="form-control">
+                <label for="" class="form-label">Address</label>
+                <textarea name="address" id="" cols="30" rows="3" class="form-control"></textarea>
+                <label for="" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control">
+                <input type="submit" value="submit" name="c_signup" class="btn btn-primary mt-2">
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="login_modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    name="email">
+
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                </div> 
+
+                <button type="submit" class="btn btn-primary" name="c_login">login</button>
+                <div class="para">don't have an account?<a href="" data-bs-toggle="modal"
+                    data-bs-target="#signupmodal">Sign up</a></div>
+            </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+
+
+
+
+    <!-- seller login modal starts here -->
+    <div id="seller_login_modal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  name="email">
+
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+              </div>
+
+              <button type="submit" class="btn btn-primary" name="s_login">login</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <!--seller login modal ends here  -->
+
+
+
+
+        
+      </div>
+
+
+<script>
+  $(document).ready(function(){
+    $.ajaxSetup({
+      headers: {
+        "X-CSRFToken" : $('[name=csrfmiddlewaretoken]').val()
+      }
+    })
+    $('#email').change(function(){
+      var email = $('#email').val()
+      $.ajax({
+        type : 'POST',
+        url:'{% url "common:email_exist" %}',
+        data:{
+          "email" : email                                                 
+        },
+        success : function (response){                             
+          if (response.status == true)
+          {
+            $ ("#message").html ('email already exists')
+            $ ("#message").css ("color","red")
+          }
+          else{
+            $ ("#message").html ('email available')
+            $ ("#message").css ("color","blue")
+          }
+          // console.log(response.status)
+        }
+      })
+
+    })
+  })
+</script>
+
+<script>
+$(document).ready (function(){
+  $.ajaxSetup({
+    headers :{
+      'X-CSRFTOKEN' : $('[name=csrfmiddlewaretoken]').val()
+    } 
+  })
+  $('#s_email').change(function(){
+    var s_email = $("#s_email").val()
+    $.ajax({
+      type :'POST',
+      url : '{% url "common:s_email_exist" %}' ,
+      data :{
+        "s_email" : s_email
+      },
+      success : function(response){
+        if (response.status == true){
+          $("#messages").html ("Email already exists")
+          $("#messages").css("color" , "red")
+        }
+        else{
+          $("#messages").html ("Email is available")
+          $("#messages").css("color" , "black")
+        }
+      }
+    })
+  })
+})
+
+</script>
+{% block content %} {% endblock %}
+</body>
+
+</html>

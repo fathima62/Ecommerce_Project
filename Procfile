@@ -1,0 +1,1 @@
+web: gunicorn pg_locator.wsgi --log-file -

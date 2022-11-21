@@ -1,0 +1,52 @@
+#div1{
+    margin-top: 150px;
+    margin-right: 150px;
+   
+    position: absolute;
+    right: 5px;
+    
+    
+}
+
+#div6{
+    height: 80px;
+}
+#a2{
+    text-decoration: none;
+    padding-left: 100px;   
+    font-size: medium;
+}
+
+#div3{
+    position:absolute  ;
+    top: 0;
+    left: 0;
+    right: 0;  
+    
+}
+
+
+#div2 {
+    padding-left: 50px;
+    
+    width: 250px;
+    height: 550px;
+    
+}
+
+.a1 {
+    font-size: medium;
+    font-weight: bold;
+    color: rgb(11, 10, 10);
+
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-decoration:none
+    
+
+}
+.badge{
+    font-size: medium;
+    padding: 20px;
+}
